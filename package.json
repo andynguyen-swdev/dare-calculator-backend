@@ -7,7 +7,8 @@
     "build-ts": "tsc",
     "postinstall": "npm run build-ts",
     "start": "npm run serve",
-    "serve": "node build/app.js"
+    "serve": "node build/app.js",
+    "dev": "nodemon build/app.js --watch build"
   },
   "author": "",
   "license": "ISC",
