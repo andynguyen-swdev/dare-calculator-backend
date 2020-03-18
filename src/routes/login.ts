@@ -2,10 +2,10 @@ import { Router } from 'express';
 import { celebrate, Segments, Joi } from 'celebrate';
 import qs from 'qs';
 import asyncHandler from '../middlewares/asyncHandler';
-import fixURL from '../utils/fixURL';
-import axios from '../bootstrapping/axios';
+import fixBaseURL from '../helpers/fixBaseURL';
+import axios from '../helpers/axios';
 import HttpError from '../models/HttpError';
-import authFailed from '../utils/authFailed';
+import authFailed from '../helpers/authFailed';
 
 const loginRoute = Router();
 loginRoute.post('/', celebrate({
@@ -24,7 +24,7 @@ loginRoute.post('/', celebrate({
             pin,
         });
 
-        let oscarURL = fixURL(req.body.oscarURL);
+        const oscarURL = fixBaseURL(req.body.oscarURL);
         const oscarRes = await axios.post(oscarURL + '/login.do', data, {
             maxRedirects: 0
         });

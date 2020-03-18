@@ -2,12 +2,12 @@
   "name": "dare-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "build/index.js",
+  "main": "build/app.js",
   "scripts": {
     "build-ts": "tsc",
     "postinstall": "npm run build-ts",
     "start": "npm run serve",
-    "serve": "node build/server.js"
+    "serve": "node build/app.js"
   },
   "author": "",
   "license": "ISC",

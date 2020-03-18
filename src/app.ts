@@ -1,8 +1,7 @@
 import express, { json, urlencoded } from "express";
 import cors from "cors";
 import { errors } from 'celebrate';
-import loginRoute from './routes/login';
-import runTemplateRoute from './routes/runTemplate';
+import { loginRoute, runTemplateRoute } from './routes';
 
 const app = express();
 app.use(urlencoded({ extended: true }));
@@ -10,7 +9,7 @@ app.use(json());
 app.use(cors());
 app.options('*', cors());
 
-app.get('/', (_,res) => res.send('It works!!!'));
+app.get('/', (_, res) => res.send('It works!!!'));
 app.use('/login', loginRoute);
 app.use('/runTemplate', runTemplateRoute);
 

@@ -3,11 +3,11 @@ import { celebrate, Segments, Joi } from 'celebrate';
 import cheerio from 'cheerio';
 import qs from 'qs';
 import asyncHandler from '../middlewares/asyncHandler';
-import fixURL from '../utils/fixURL';
-import axios from '../bootstrapping/axios';
+import fixBaseURL from '../helpers/fixBaseURL';
+import axios from '../helpers/axios';
 import config from '../config';
 import HttpError from '../models/HttpError';
-import authFailed from '../utils/authFailed';
+import authFailed from '../helpers/authFailed';
 
 const runTemplateRoute = Router();
 
@@ -26,7 +26,7 @@ runTemplateRoute.post('/', celebrate({
             queryString: (config.ALLOW_ARBITRARY_QUERY && queryString) || config.QUERY_STRING,
         };
 
-        let oscarURL = fixURL(req.body.oscarURL);
+        const oscarURL = fixBaseURL(req.body.oscarURL);
         const oscarRes = await axios.post(oscarURL + '/oscarReport/reportByTemplate/GenerateReportAction.do',
             qs.stringify(data),
             {
