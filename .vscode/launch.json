@@ -16,7 +16,14 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "runtimeArgs": ["--watch", "build"]
+            "runtimeArgs": [
+                "--watch",
+                "build"
+            ],
+            "env": {
+                "QUERY_STRING": "select\r\n    demo.demographic_no as id,\r\n    demo.last_name,\r\n    demo.first_name,\r\n    dataField,\r\n    dateObserved\r\nfrom\r\n    measurements,\r\n    demographic demo\r\nwhere\r\n    type = 'A1C'\r\n    and demo.patient_status = 'AC'\r\n    and demographicNo = demo.demographic_no\r\norder by\r\n    demo.last_name,\r\n    demo.first_name;",
+                "ALLOW_ARBITRARY_QUERY": "1"
+            }
         },
         {
             "type": "node",

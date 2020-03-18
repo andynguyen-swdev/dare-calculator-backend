@@ -1,0 +1,6 @@
+
+<report title="DARE Report Template" description="Special template for diabetes calculator" active="1">
+<query>{queryString}</query>
+<param id="queryString" type="text" description="Query string"> </param>
+</report>
+
