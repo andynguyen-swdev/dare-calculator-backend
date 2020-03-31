@@ -8,6 +8,7 @@ const config = {
     ALLOW_ARBITRARY_QUERY,
     PORT: process.env.PORT,
     QUERY_STRING: process.env.QUERY_STRING,
+    TEMPLATE_NAME: 'DARE Template',
 }
 
 export default config;
